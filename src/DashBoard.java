@@ -19,15 +19,9 @@ public class DashBoard {
 	
 	public void checkCritical(){
 		for(Task t : taskList){
-			
+			t.checkCritical();
 		}
 	}
-	
-	private void checkSubCritical(Task t){
-	for(Task sub : t.getSubTasks()){
-				checkSubCritical(sub);
-			}
-		}
 	
 	public String subTask(Task t){
 		String res="";
