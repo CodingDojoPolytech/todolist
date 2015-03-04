@@ -27,6 +27,15 @@ public class TaskTest {
 	}
 	
 	@Test
+	public void testPriorityMinor(){
+		Task t = new Task("name", "desc");
+		assertEquals(t.getPriority(), Priority.MAJOR);
+
+		t.setPriority(Priority.MINOR);
+		assertEquals(t.getPriority(), Priority.MINOR);
+	}
+	
+	@Test
 	public void testStatesProgress() {
 		Task t = new Task("name", "description");
 		t.nextState();

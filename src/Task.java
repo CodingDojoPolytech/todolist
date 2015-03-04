@@ -2,19 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Task {
+//Implements Comparable 
+public class Task implements Comparable<Task>{
 	// nom
 	private String name;
 	// description
 	private String description;
 	private State state;
 	private List<Task> subTasks = new ArrayList<>();
+	//Priority
+	private Priority priority;
 	
 	// constructeur
 	public Task(String name, String description) {
 		this.name = name;
 		this.description = description;
 		this.state = State.TODO;
+		this.priority = Priority.MAJOR;
 	}
 
 	public State getState() {
@@ -86,6 +90,20 @@ public class Task {
 			if (! t.isFinished()) subTasksFinished = false;
 		}
 		return state == State.DONE && subTasksFinished;
+	}
+
+	public Priority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Priority priority) {
+		this.priority = priority;
+	}
+
+	@Override
+	public int compareTo(Task o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

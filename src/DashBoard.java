@@ -24,12 +24,10 @@ public class DashBoard {
 	}
 	
 	private void checkSubCritical(Task t){
-		if(t.getSubTasks().size()!=0){
-			for(Task sub : t.getSubTasks()){
+	for(Task sub : t.getSubTasks()){
 				checkSubCritical(sub);
 			}
 		}
-	}
 	
 	public String subTask(Task t){
 		String res="";
