@@ -67,4 +67,11 @@ public class TaskTest {
 	
 		assertTrue(rootTask.isFinished());	
 	}
+	
+	public void testToString(){
+		Task t = new Task("finir ogl", "avant dimanche");
+		t.setState(State.DONE);
+		
+		assertEquals(t.toString(),"Name: finir ogl \tState: DONE");
+	}
 }

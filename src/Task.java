@@ -56,8 +56,16 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@Override
 	public String toString(){
-		return "";
+		return "Name: "+name
+				+"\tState: "+state;
+	}
+	
+	public String tolongString(){
+		return toString()
+				+"\tDescription: "+description;
 	}
 
 	public List<Task> getSubTasks() {
