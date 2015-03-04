@@ -101,15 +101,10 @@ public class Task implements Comparable<Task> {
 
 	@Override
 	public int compareTo(Task o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.priority.prior - o.priority.prior;
 	}
 
-	public void checkSubCritical() {
-		for (Task sub : getSubTasks()) {
-			sub.checkSubCritical();
-		}
-
+	public void checkCritical() {
 	}
 
 }
