@@ -36,4 +36,14 @@ public class TaskTest {
 		t.nextState();
 		assertEquals(t.getState(), State.DONE);
 	}
+	
+	@Test
+	public void testSubTasks() {
+		Task t = new Task("name", "description");
+		
+		assertNotNull(t.getSubTasks());
+		t.addSubTask(new Task("abc", "def"));
+		
+		assertEquals(t.getSubTasks().size(), 1);
+	}
 }

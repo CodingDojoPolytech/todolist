@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Task {
 	// nom
@@ -5,6 +8,7 @@ public class Task {
 	// description
 	private String description;
 	private State state;
+	private List<Task> subTasks = new ArrayList<>();
 	
 	// constructeur
 	public Task(String name, String description) {
@@ -54,5 +58,17 @@ public class Task {
 	}
 	public String toString(){
 		return "";
+	}
+
+	public List<Task> getSubTasks() {
+		return subTasks;
+	}
+
+	public void setSubTasks(List<Task> subTasks) {
+		this.subTasks = subTasks;
+	}
+
+	public void addSubTask(Task task) {
+		this.subTasks.add(task);
 	}
 }

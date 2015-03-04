@@ -9,6 +9,8 @@ public class DashBoardTest {
 	public void testConstructor() {
 		DashBoard db = new DashBoard(null);
 		assertNull(db.getTaskList());
+		
+		
 	}
 
 }
