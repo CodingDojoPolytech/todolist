@@ -4,11 +4,21 @@ public class Task {
 	private String name;
 	// description
 	private String description;
+	private State state;
 	
 	// constructeur
 	public Task(String name, String description) {
 		this.name = name;
 		this.description = description;
+		this.state = State.TODO;
+	}
+
+	public State getState() {
+		return state;
+	}
+	//TODO ordre dans les states
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public String getName() {
@@ -25,5 +35,8 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String toString(){
+		return "";
 	}
 }
