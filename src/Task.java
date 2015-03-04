@@ -28,6 +28,22 @@ public class Task {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void nextState() {
+		switch(state) {
+		case DONE:
+			state = State.DONE;
+			break;
+		case IN_PROGRESS:
+			state = State.DONE;
+			break;
+		case TODO:
+			state = State.IN_PROGRESS;
+			break;
+		default:
+			throw new RuntimeException("State not handled");
+		}
+	}
 
 	public String getDescription() {
 		return description;

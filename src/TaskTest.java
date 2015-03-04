@@ -26,6 +26,14 @@ public class TaskTest {
 		assertEquals(t.getState(), State.IN_PROGRESS);
 	}
 	
-
-
+	@Test
+	public void testStatesProgress() {
+		Task t = new Task("name", "description");
+		t.nextState();
+		assertEquals(t.getState(), State.IN_PROGRESS);
+		t.nextState();
+		assertEquals(t.getState(), State.DONE);
+		t.nextState();
+		assertEquals(t.getState(), State.DONE);
+	}
 }
