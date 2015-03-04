@@ -71,4 +71,13 @@ public class Task {
 	public void addSubTask(Task task) {
 		this.subTasks.add(task);
 	}
+	
+	public boolean isFinished() {
+		boolean subTasksFinished = true;
+		for(Task t: subTasks) {
+			if (! t.isFinished()) subTasksFinished = false;
+		}
+		return state == State.DONE && subTasksFinished;
+	}
+	
 }

@@ -46,4 +46,25 @@ public class TaskTest {
 		
 		assertEquals(t.getSubTasks().size(), 1);
 	}
+	
+	public void testTaskFinished() {
+		Task t = new Task("finir ogl", "avant dimanche");
+		assertFalse(t.isFinished());
+		
+		t.setState(State.DONE);
+		assertTrue(t.isFinished());
+		
+		Task rootTask = new Task("root", "rootDescription");
+		Task subTask1 = new Task("sub1", "sub1 desc");
+		Task subTask2 = new Task("sub2", "sub2 desc");
+		
+		assertFalse(rootTask.isFinished());
+		rootTask.setState(State.DONE);
+		assertFalse(rootTask.isFinished());
+		subTask1.setState(State.DONE);
+		assertFalse(rootTask.isFinished());
+		subTask2.setState(State.DONE);
+	
+		assertTrue(rootTask.isFinished());	
+	}
 }
