@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 
@@ -76,11 +79,30 @@ public class TaskTest {
 	
 		assertTrue(rootTask.isFinished());	
 	}
-	
+	@Test
+	public void testCompareTo(){
+		Task t = new Task("finir ogl", "avant dimanche");
+		t.setPriority(Priority.MAJOR);
+		Task t2 = new Task("finir ogl", "avant dimanche");
+		t2.setPriority(Priority.MINOR);
+		assertTrue(t.compareTo(t2)>0);
+	}
 	public void testToString(){
 		Task t = new Task("finir ogl", "avant dimanche");
 		t.setState(State.DONE);
 		
 		assertEquals(t.toString(),"Name: finir ogl \tState: DONE");
+	}
+	@Test
+	public void getListCriticalTest(){
+		List<Task> t = new ArrayList<Task>();
+		Task t1 = new Task("block", "avant dimanche");
+		t1.setPriority(Priority.BLOCKING);
+		Task t2 = new Task("ffff", "block");
+		t.add(t1);
+		t.add(t2);
+		DashBoard d = new DashBoard(t);
+		assertEquals(d.getListCriticalTasks().get(0).getName(), "block");
+		
 	}
 }

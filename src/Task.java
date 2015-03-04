@@ -104,7 +104,8 @@ public class Task implements Comparable<Task> {
 		return this.priority.prior - o.priority.prior;
 	}
 
-	public void checkCritical() {
+	public boolean isCritical() {
+		return this.getPriority().equals(Priority.BLOCKING);
 	}
 
 }

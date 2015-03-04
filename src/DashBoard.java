@@ -1,12 +1,15 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class DashBoard {
 
 	private List<Task> taskList;
+	private MessageSender sender;
 	
 	public DashBoard(List<Task> taskList) {
-		this.taskList = taskList;			
+		this.taskList = taskList;
+		this.sender = new MessageSender();
 	}
 	
 	public List<Task> getTaskList() {
@@ -17,11 +20,29 @@ public class DashBoard {
 		taskList.add(task);
 	}
 	
-	public void checkCritical(){
+	public List<Task> getListCriticalTasks(){
+		List<Task> critic = new ArrayList<Task>();
 		for(Task t : taskList){
-			t.checkCritical();
+			if(t.isCritical()){
+				critic.add(t);
+			}
+		}
+		return critic;
+	}
+	
+	public void sendCriticalTasksMessage() {
+		List<Task> criticalTasks = getListCriticalTasks();
+		if (criticalTasks.size() > 0) {
+			StringBuilder sb = new StringBuilder();
+			
+			for(Task t : criticalTasks) {
+				sb.append("Critic task:").append(t.toString());
+			}
+			
+			sender.sendMessage(sb.toString());
 		}
 	}
+	
 	
 	public String subTask(Task t){
 		String res="";
@@ -41,6 +62,10 @@ public class DashBoard {
 			res+=this.subTask(t);
 		}
 		return res;
+	}
+
+	public MessageSender getMessageSender() {
+		return sender;
 	}
 	
 }
